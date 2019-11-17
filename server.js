@@ -3,7 +3,9 @@ const app = express()
 const path  =require('path')
  //data 
 
-
+//body parsle 
+app.use(express.json())
+app.use(express.urlencoded({extended : false}))
 
 app.use('/api/students' , require('./routes/api/students'))
 
