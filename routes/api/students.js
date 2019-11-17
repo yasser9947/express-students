@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const students = require('../../studentsData')
+let students = require('../../studentsData')
 const uuid = require('uuid')
 
 // get all students 
@@ -70,6 +70,22 @@ router.put('/:id' , (req , res) =>{
         res.status(400).json({msg : "your id not exist" })
 
     }
+})
+// delete 
+router.delete('/:id' ,(req , res)=>{
+
+    let flag = students.some(student => student.id == req.params.id)
+ 
+    if (flag){
+         students = students.filter(student =>{
+       
+            return student.id != req.params.id
+    })
+        res.json({ msg: "studen deletef" , students})
+    }else{
+        res.status(400).json({msg : "id not found"})
+    }
+       
 })
 
 module.exports = router
