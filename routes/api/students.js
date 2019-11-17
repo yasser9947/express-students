@@ -2,12 +2,14 @@ const express = require('express')
 const router = express.Router()
 let students = require('../../studentsData')
 const uuid = require('uuid')
-
+const Students = require("../../models/Student").Student
 // get all students 
 router.get('/' , (req , res) =>{
-
-    res.json(students)
-
+   
+    Students.find()
+    .then(data =>{
+        res.render('index' , {students : data})
+    })
 })
 
 // get singale student
@@ -19,7 +21,7 @@ router.get("/:id" ,(req , res) =>{
        
             return student.id == req.params.id
     })
-        res.json(student)
+        res.render("show" ,{student :student })
     }else{
         res.status(400).json({msg : "id not found"})
     }
@@ -30,13 +32,18 @@ router.get("/:id" ,(req , res) =>{
 router.post('/' , (req , res) =>{
 
     newStudent = {
-        id : uuid.v4(),
+        // id : uuid.v4(),
         name : req.body.name,
         email:req.body.email
     }
     if (req.body.name && req.body.email ){
-        students.push(newStudent)
-        res.send( {msg :"the student  created" , students})
+      
+
+        var student = new Students(newStudent)
+        student.save()
+        .then(data =>{
+            res.send({msg : "added "})
+        }).catch(err => console.log(err))
     }
     else {
         res.status(400).json({msg : "enter your email or name"})
