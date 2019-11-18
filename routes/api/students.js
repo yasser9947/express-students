@@ -54,7 +54,22 @@ router.delete('/:id' ,(req , res)=>{
     })
 })
 
+router.get('/edit/:id' , (req , res )=>{
 
+    Students.findById(req.params.id)
+    .then(data =>{
+        res.render('edit', {student : data} )
+    }).catch(err => res.send("error"))
+  
+})
+
+router.put('/edit/:id' , (req , res)=>{
+    var updateStudent = req.body
+    Students.findByIdAndUpdate(req.params.id ,updateStudent)
+    .then(()=>{
+        res.redirect('/api/students')
+    }).catch(err =>res.send(err))
+})
 
 
 
