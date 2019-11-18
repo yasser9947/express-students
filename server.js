@@ -3,6 +3,7 @@ const app = express()
 const path  =require('path')
 const ejs = require('ejs')
 const mongoose = require('mongoose')
+const methodeOverriad = require('method-override')
 
 // connect to mongoose
 mongoose.connect('mongodb://localhost/', {useNewUrlParser : true , useUnifiedTopology: true } )
@@ -19,7 +20,7 @@ mongoose.connect('mongodb://localhost/', {useNewUrlParser : true , useUnifiedTop
  //body parsle 
 app.use(express.json())
 app.use(express.urlencoded({extended : false}))
-
+app.use(methodeOverriad('_method'))
 app.use('/api/students' , require('./routes/api/students'))
 
 
