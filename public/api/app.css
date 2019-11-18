@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Righteous');
+
+body {
+  background: url(https://static.vecteezy.com/system/resources/previews/000/109/440/non_2x/free-vector-grunge-textura-background.jpg);
+  margin: 0;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-family: 'Comfortaa', cursive;
+}
+
+h1 {
+  font-family: 'Righteous', cursive;
+  background: antiquewhite;
+  margin:0;
+  margin-bottom: .5em;
+  padding: 1em;
+  text-align: center;
+}
+
+a {
+  color: orange;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px black;
+  font-size: 1.5em;
+  background: rgba(67, 141, 238, 0.9);
+  /* padding: .25em;
+  margin: .5em; */
+
+}
+
+a:hover {
+  color: ghostwhite;
+}
+
+li {
+  list-style: none;
+  height: 30px;
+  font-size: 20px;
+}
+
+li a {
+  color: rgb(219, 240, 145);
+}
+
+input[type=text] {
+  padding: .3em;
+}
+
+input[type=submit] {
+  padding: .3em;
+  color: orange;
+  background: mediumseagreen;
+  font-size: 1em;
+  border-radius: 10%;
+}
